@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 
 import { Button } from './Button';
 import styles from './header.module.css';
-import logo from '../public/invert_santa.png';
 
 export const Header = ({ pageName, user, onLogin, onLogout, onCreateAccount }) => (
   <header>
     <div className={styles.wrapper}>
-      <div>
-        <img width="32" height="32" src={logo} style={{borderRadius: '50%'}} />
+      <div style={{display: 'flex', alignItems: 'center'}}>
+        <img width="32" height="32" src="/invert_santa.png" style={{borderRadius: '50%'}} />
         <h1>{ pageName }</h1>
       </div>
       <div>
