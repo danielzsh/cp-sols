@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import Button from '../components/Button'
+import { Header } from '../stories/Header'
 import ClickCount from '../components/ClickCount'
 import styles from '../styles/home.module.css'
 
@@ -27,7 +28,8 @@ function Home() {
   }, [increment])
 
   return (
-    <main className={styles.main}>
+    <main className={styles.main}>    
+      <Header />
       <h1>Fast Refresh Demo</h1>
       <p>
         Fast Refresh is a Next.js feature that gives you instantaneous feedback
