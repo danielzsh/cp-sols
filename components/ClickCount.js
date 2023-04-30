@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-import Button from './Button'
+import { Button } from '../stories/Button'
 
 export default function ClickCount() {
   const [count, setCount] = useState(0)
@@ -7,5 +7,5 @@ export default function ClickCount() {
     setCount((v) => v + 1)
   }, [setCount])
 
-  return <Button onClick={increment}>Clicks: {count}</Button>
+  return <Button onClick={increment} primary='true' label={['Count: ', count].join('')} />
 }
