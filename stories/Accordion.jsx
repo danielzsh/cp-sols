@@ -19,7 +19,9 @@ Accordion.defaultProps = {
             content 2
         </AccordionElement>
         <AccordionElement label='button 3'>
-            content 3
+            <AccordionElement label='nested'>
+                content 4
+            </AccordionElement>
         </AccordionElement>
     </>
 }
