@@ -1,9 +1,14 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styles from './accordion.module.css';
 import PropTypes from 'prop-types';
 
 export const AccordionElement = ({ children, label }) => {
     const [open, setOpen] = useState(false);
+    const content = useRef(null);
+    useEffect(() => {
+        if (open) content.current.style.maxHeight = content.current.scrollHeight + 'px';
+        else content.current.style.maxHeight = 0;
+    }, [open]);
     return <div className={styles.accordion}>
         <button className={styles['accordion-button'] + (open ? ` ${styles.open}` : '')} style={{display: 'flex', alignItems: 'center'}} onClick={() => {
             setOpen(!open);
@@ -19,7 +24,7 @@ export const AccordionElement = ({ children, label }) => {
             }
             {label}
         </button>
-        <div className={`${styles['accordion-content']} ${open ? styles.visible : styles.hidden}`}>
+        <div className={`${styles['accordion-content']} ${open ? styles.visible : styles.hidden}`} ref={content}>
             {children}
         </div>
     </div>
