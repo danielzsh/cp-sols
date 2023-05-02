@@ -66,3 +66,7 @@ section ul {
 section li {
   margin-bottom: 8px;
 }
+
+button {
+  font-family: inherit;
+}
