@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import { Header } from './Header';
+import { Accordion } from './Accordion';
+import { AccordionElement } from './AccordionElement';
 import styles from './page.module.css';
 
 export const Page = ({ children }) => {
@@ -14,10 +16,24 @@ export const Page = ({ children }) => {
         onLogout={() => setUser(undefined)}
         onCreateAccount={() => setUser({ name: 'Jane Doe' })}
       />
-
-      <section>
-        { children }
-      </section>
+      <main style={{display: 'flex'}}>
+        <Accordion>
+          <AccordionElement label='button 1'>
+              content 1
+          </AccordionElement>
+          <AccordionElement label='button 2'>
+              content 2
+          </AccordionElement>
+          <AccordionElement label='button 3'>
+              <AccordionElement label='nested'>
+                  content 4
+              </AccordionElement>
+          </AccordionElement>
+        </Accordion>
+        <section>
+          { children }
+        </section>
+        </main>
     </article>
   );
 };
