@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { AccordionElement } from './AccordionElement';
 export const Accordion = ({children}) => {
-    return <div style={{flexDirection: 'column'}}>
+    return <div style={{flexDirection: 'column', width: '300px'}} >
         {children}
     </div>
 }

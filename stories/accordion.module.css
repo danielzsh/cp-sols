@@ -3,8 +3,7 @@
 }
 .accordion-button {
     width: 100%;
-    background-color: #eee;
-    opacity: 0.9;
+    background-color: transparent;
     color: #444;
     cursor: pointer;
     padding: 18px;
@@ -16,12 +15,8 @@
     border-radius: 10px;
 }
 
-.accordion-button.open {
-    background-color: lightgray;
-}
-
 .accordion-button:hover {
-    opacity: 1.0;
+    background-color: ghostwhite;
 }
 
 .accordion-content {

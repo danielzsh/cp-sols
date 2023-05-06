@@ -33,9 +33,8 @@ button + button {
 section {
   font-size: 14px;
   line-height: 24px;
-  padding: 48px 20px;
-  margin: 0 auto;
-  max-width: 600px;
+  padding: 18px 20px;
+  max-width: 800px;
   color: #333;
 }
 section h1, section h2, section h3 {
