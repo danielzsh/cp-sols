@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Button } from '../stories/Button'
-import { Page } from '../stories/Page'
+import { Page } from '../components/page/Page'
 import ClickCount from '../components/ClickCount'
 import styles from '../styles/home.module.css'
 

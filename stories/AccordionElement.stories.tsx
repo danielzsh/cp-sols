@@ -1,4 +1,4 @@
-import { AccordionElement } from "./AccordionElement";
+import { AccordionElement } from "../components/accordion";
 export default {
     title: 'Accordion Element',
     component: AccordionElement,

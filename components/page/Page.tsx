@@ -1,8 +1,7 @@
 import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types'
-import { Header } from './Header';
-import { Accordion } from './Accordion';
-import { AccordionElement } from './AccordionElement';
+import { Header } from '../Header';
+import { Accordion, AccordionElement } from '../accordion';
 import styles from './page.module.css';
 
 export const Page = ({ children, pageName } : { children: ReactNode, pageName: string }) => {
