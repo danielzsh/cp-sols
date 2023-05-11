@@ -6,9 +6,6 @@ import { AccordionElement } from './AccordionElement';
 import styles from './page.module.css';
 
 export const Page = ({ children, pageName } : { children: ReactNode, pageName: string }) => {
-  const [user, setUser] = React.useState({
-    name: 'Jane Doe'
-  });
 
   return (
     <article>
@@ -16,7 +13,7 @@ export const Page = ({ children, pageName } : { children: ReactNode, pageName: s
         pageName={pageName}
       />
       <main style={{display: 'flex'}}>
-        <Accordion>
+        <Accordion style={{flex: '1'}}>
           <AccordionElement label='button 1'>
               content 1
           </AccordionElement>
@@ -29,7 +26,7 @@ export const Page = ({ children, pageName } : { children: ReactNode, pageName: s
               </AccordionElement>
           </AccordionElement>
         </Accordion>
-        <section>
+        <section style={{flex: '5'}}>
           { children }
         </section>
         </main>

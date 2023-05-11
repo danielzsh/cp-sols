@@ -1,6 +1,6 @@
 import { AccordionElement } from './AccordionElement';
-export const Accordion = ({children}) => {
-    return <div style={{flexDirection: 'column', width: '300px'}} >
+export const Accordion = ({children, ...props}) => {
+    return <div style={{flexDirection: 'column', ...props.style}} >
         {children}
     </div>
 }

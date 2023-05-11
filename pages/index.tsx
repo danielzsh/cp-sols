@@ -4,13 +4,6 @@ import { Page } from '../stories/Page'
 import ClickCount from '../components/ClickCount'
 import styles from '../styles/home.module.css'
 
-function throwError() {
-  console.log(
-    // The function body() is not defined
-    document.body()
-  )
-}
-
 function Home() {
   const [count, setCount] = useState(0)
   const increment = useCallback(() => {
@@ -47,21 +40,6 @@ function Home() {
       <div>
         <p>Component with state.</p>
         <ClickCount />
-      </div>
-      <hr className={styles.hr} />
-      <div>
-        <p>
-          The button below will throw 2 errors. You'll see the error overlay to
-          let you know about the errors but it won't break the page or reset
-          your state.
-        </p>
-        <Button
-          onClick={() => {
-            setTimeout(() => document.parentNode(), 0)
-            throwError()
-          }}
-          label="Throw an Error"
-        />
       </div>
       <hr className={styles.hr} />
     </Page>

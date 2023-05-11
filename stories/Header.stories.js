@@ -11,12 +11,4 @@ export default {
   },
 };
 
-export const LoggedIn = {
-  args: {
-    user: {
-      name: 'Jane Doe',
-    },
-  },
-};
-
-export const LoggedOut = {};
+export const Default = {};
