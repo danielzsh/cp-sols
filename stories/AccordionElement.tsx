@@ -1,8 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, ReactElement, ReactNode } from 'react';
 import styles from './accordion.module.css';
-import PropTypes from 'prop-types';
 
-export const AccordionElement = ({ children, label }) => {
+export const AccordionElement = ({ children, label } : {children: ReactNode, label: string}) => {
     const [open, setOpen] = useState(true);
     const [height, setHeight] = useState('0px');
     const content = useRef(null);
@@ -37,11 +36,6 @@ export const AccordionElement = ({ children, label }) => {
             {children}
         </div>
     </div>
-}
-
-AccordionElement.propTypes = {
-    children: PropTypes.element,
-    label: PropTypes.string
 }
 
 AccordionElement.defaultProps = {

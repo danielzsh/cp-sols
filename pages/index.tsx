@@ -57,7 +57,7 @@ function Home() {
             your state.
           </p>
           <Button
-            onClick={(e) => {
+            onClick={() => {
               setTimeout(() => document.parentNode(), 0)
               throwError()
             }}

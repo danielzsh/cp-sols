@@ -6,7 +6,9 @@ import { AccordionElement } from './AccordionElement';
 import styles from './page.module.css';
 
 export const Page = ({ children }) => {
-  const [user, setUser] = React.useState();
+  const [user, setUser] = React.useState({
+    name: 'Jane Doe'
+  });
 
   return (
     <article>
