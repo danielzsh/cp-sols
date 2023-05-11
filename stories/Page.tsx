@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types'
 import { Header } from './Header';
 import { Accordion } from './Accordion';
 import { AccordionElement } from './AccordionElement';
 import styles from './page.module.css';
 
-export const Page = ({ children }) => {
+export const Page = ({ children, pageName } : { children: ReactNode, pageName: string }) => {
   const [user, setUser] = React.useState({
     name: 'Jane Doe'
   });
@@ -13,10 +13,7 @@ export const Page = ({ children }) => {
   return (
     <article>
       <Header
-        user={user}
-        onLogin={() => setUser({ name: 'Jane Doe' })}
-        onLogout={() => setUser(undefined)}
-        onCreateAccount={() => setUser({ name: 'Jane Doe' })}
+        pageName={pageName}
       />
       <main style={{display: 'flex'}}>
         <Accordion>

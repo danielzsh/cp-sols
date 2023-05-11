@@ -28,44 +28,42 @@ function Home() {
   }, [increment])
 
   return (
-    <Page>
-      <main className={styles.main}>  
-        <h1>Fast Refresh Demo</h1>
+    <Page pageName='Home'>
+      <h1>Fast Refresh Demo</h1>
+      <p>
+        Fast Refresh is a Next.js feature that gives you instantaneous feedback
+        on edits made to your React components, without ever losing component
+        state.
+      </p>
+      <hr className={styles.hr} />
+      <div>
         <p>
-          Fast Refresh is a Next.js feature that gives you instantaneous feedback
-          on edits made to your React components, without ever losing component
-          state.
+          Auto incrementing value. The counter won't reset after edits or if
+          there are errors.
         </p>
-        <hr className={styles.hr} />
-        <div>
-          <p>
-            Auto incrementing value. The counter won't reset after edits or if
-            there are errors.
-          </p>
-          <p>Current value: {count}</p>
-        </div>
-        <hr className={styles.hr} />
-        <div>
-          <p>Component with state.</p>
-          <ClickCount />
-        </div>
-        <hr className={styles.hr} />
-        <div>
-          <p>
-            The button below will throw 2 errors. You'll see the error overlay to
-            let you know about the errors but it won't break the page or reset
-            your state.
-          </p>
-          <Button
-            onClick={() => {
-              setTimeout(() => document.parentNode(), 0)
-              throwError()
-            }}
-            label="Throw an Error"
-          />
-        </div>
-        <hr className={styles.hr} />
-      </main>  
+        <p>Current value: {count}</p>
+      </div>
+      <hr className={styles.hr} />
+      <div>
+        <p>Component with state.</p>
+        <ClickCount />
+      </div>
+      <hr className={styles.hr} />
+      <div>
+        <p>
+          The button below will throw 2 errors. You'll see the error overlay to
+          let you know about the errors but it won't break the page or reset
+          your state.
+        </p>
+        <Button
+          onClick={() => {
+            setTimeout(() => document.parentNode(), 0)
+            throwError()
+          }}
+          label="Throw an Error"
+        />
+      </div>
+      <hr className={styles.hr} />
     </Page>
   )
 }
