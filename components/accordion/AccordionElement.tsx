@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect, ReactElement, ReactNode } from 'react';
+import { useState, useRef, useEffect, ReactNode } from 'react';
 import styles from './accordion.module.css';
+import { motion } from 'framer-motion';
 
 export const AccordionElement = ({ children, label } : {children: ReactNode, label: string}) => {
     const [open, setOpen] = useState(true);
@@ -18,15 +19,37 @@ export const AccordionElement = ({ children, label } : {children: ReactNode, lab
         <button className={styles['accordion-button'] + (open ? ` ${styles.open}` : '')} style={{display: 'flex', alignItems: 'center'}} onClick={() => {
             setOpen(!open);
         }}>
-            {open ? 
-                <svg clipRule="evenodd" fillRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width='30' height='30'>
-                    <path d="m16.843 10.211c.108-.141.157-.3.157-.456 0-.389-.306-.755-.749-.755h-8.501c-.445 0-.75.367-.75.755 0 .157.05.316.159.457 1.203 1.554 3.252 4.199 4.258 5.498.142.184.36.29.592.29.23 0 .449-.107.591-.291 1.002-1.299 3.044-3.945 4.243-5.498z"/>
-                </svg>
-                : 
-                <svg clipRule="evenodd" fillRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"  width='30' height='30'>
-                    <path d="m10.211 7.155c-.141-.108-.3-.157-.456-.157-.389 0-.755.306-.755.749v8.501c0 .445.367.75.755.75.157 0 .316-.05.457-.159 1.554-1.203 4.199-3.252 5.498-4.258.184-.142.29-.36.29-.592 0-.23-.107-.449-.291-.591-1.299-1.002-3.945-3.044-5.498-4.243z"/>
-                </svg>
-            }
+            <motion.svg 
+                height="32" 
+                width="32" 
+                viewBox="0 0 20 20"
+                animate={open ? "open" : "closed"}
+                variants={{
+                    open: {rotate: 90},
+                    closed: {rotate: 0}
+                }}
+            >
+                <motion.path 
+                    d="M5 14 L5 3 L15 10 L5 17" 
+                    style={{fill: 'none', stroke: 'grey'}}
+                    transition={{duration: 2}}
+                />
+                <motion.path 
+                    d="M5 17 L5 3 L15 10 L5 17"
+                    style={{stroke: 'red'}} 
+                    variants={{
+                        open: {
+                            pathLength: 1,
+                            fill: "rgba(0, 0, 0, 1)"
+                        },
+                        closed: {
+                            pathLength: 0,
+                            fill: "rgba(0, 0, 0, 0)"
+                        }
+                    }}
+                    transition={{duration: 1, pathLength: {duration: 0.5}}}
+                />
+            </motion.svg>
             {label}
         </button>
         <div 
