@@ -8,7 +8,6 @@ export const AccordionElement = ({ children, label } : {children: ReactNode, lab
     const content = useRef(null);
     useEffect(() => {
         setHeight(content.current.scrollHeight + 'px');
-        // console.log(height);
         setOpen(false);
     }, []);
     useEffect(() => {
@@ -16,9 +15,13 @@ export const AccordionElement = ({ children, label } : {children: ReactNode, lab
         else content.current.style.maxHeight = 0;
     }, [open]);
     return <div className={styles.accordion}>
-        <button className={styles['accordion-button'] + (open ? ` ${styles.open}` : '')} style={{display: 'flex', alignItems: 'center'}} onClick={() => {
-            setOpen(!open);
-        }}>
+        <button 
+            className={styles['accordion-button']} 
+            style={{display: 'flex', alignItems: 'center'}} 
+            onClick={() => {
+                setOpen(!open);
+            }}
+        >
             <motion.svg 
                 height="32" 
                 width="32" 
@@ -30,11 +33,20 @@ export const AccordionElement = ({ children, label } : {children: ReactNode, lab
                 }}
             >
                 <motion.path 
-                    d="M5 14 L5 3 L15 10 L5 17" 
-                    style={{fill: 'none', stroke: 'grey'}}
-                    transition={{duration: 2}}
+                    d="M5 17 L5 3 L15 10 L5 17" 
+                    transition={{duration: 0.5}}
+                    variants={{
+                        open: {
+                            stroke: "black",
+                            fill: "rgba(0, 0, 0, 1)"
+                        },
+                        closed: {
+                            stroke: "grey",
+                            fill: "rgba(0, 0, 0, 0)"
+                        }
+                    }}
                 />
-                <motion.path 
+                {/* <motion.path 
                     d="M5 17 L5 3 L15 10 L5 17"
                     style={{stroke: 'red'}} 
                     variants={{
@@ -48,7 +60,7 @@ export const AccordionElement = ({ children, label } : {children: ReactNode, lab
                         }
                     }}
                     transition={{duration: 1, pathLength: {duration: 0.5}}}
-                />
+                /> */}
             </motion.svg>
             {label}
         </button>
