@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, ReactNode } from 'react';
+import { useState, useRef, ReactNode } from 'react';
 import styles from './accordion.module.css';
 import { motion } from 'framer-motion';
 

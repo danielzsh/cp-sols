@@ -4,7 +4,7 @@ import { Header } from '../header/Header';
 import { Accordion, AccordionElement } from '../accordion';
 import styles from './page.module.css';
 
-export const Page = ({ children, pageName } : { children: ReactNode, pageName: string }) => {
+export const Page = ({ children, pageName } : { children: ReactNode | ReactNode[], pageName: string }) => {
 
   return (
     <article>
