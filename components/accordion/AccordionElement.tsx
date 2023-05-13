@@ -9,6 +9,7 @@ export const AccordionElement = ({ children, label } : {children: ReactNode, lab
         <motion.div 
             className={styles.accordion}
             animate={open ? "open" : "closed"}
+            initial={"closed"}
         >
             <button 
                 className={styles['accordion-button']} 
