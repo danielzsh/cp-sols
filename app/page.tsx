@@ -1,23 +1,12 @@
-import { Page } from '../components/page/Page'
-import ClickCount from '../components/ClickCount'
 import styles from './home.module.css'
 
 function Home() {
-
   return (
     <>
-      <h1>Fast Refresh Demo</h1>
+      <h1>Home</h1>
       <p>
-        Fast Refresh is a Next.js feature that gives you instantaneous feedback
-        on edits made to your React components, without ever losing component
-        state.
+        Welcome! This website is a little project of mine, a collection of a few competitive programming solutions I thought were worth sharing. Enjoy!
       </p>
-      <hr className={styles.hr} />
-      <div>
-        <p>Component with state.</p>
-        <ClickCount />
-      </div>
-      <hr className={styles.hr} />
     </>
   )
 }
