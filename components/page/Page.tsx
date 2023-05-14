@@ -9,19 +9,17 @@ export const Page = ({ children } : { children: ReactNode }) => {
         pageName={"CP Solutions"}
       />
       <main style={{display: 'flex'}}>
-        <Accordion style={{flex: '1'}}>
-          <AccordionElement label='button 1'>
-              content 1
-          </AccordionElement>
-          <AccordionElement label='button 2'>
-              content 2
-          </AccordionElement>
-          <AccordionElement label='button 3'>
-              <AccordionElement label='nested'>
-                  content 4
-              </AccordionElement>
-          </AccordionElement>
-        </Accordion>
+        <Accordion style={{flex: 1}}
+          content={
+            {
+              'button 1': <>content 1</>,
+              'button 2': <>content 2</>,
+              'button 3': {
+                'nested': <>content 3</>
+              }
+            }
+          }
+        />
         <section style={{flex: '5'}}>
           { children }
         </section>
