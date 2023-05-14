@@ -41,8 +41,7 @@ section {
 }
 section h1, section h2, section h3 {
   margin: 0 0 10px;
-  display: inline-block;
-  vertical-align: top;
+  display: block;
 }
 section h1 {
   font-weight: 700;
