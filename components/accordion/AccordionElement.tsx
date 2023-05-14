@@ -1,3 +1,4 @@
+'use client';
 import { useState, useRef, ReactNode } from 'react';
 import styles from './accordion.module.css';
 import { motion } from 'framer-motion';
@@ -60,9 +61,4 @@ export const AccordionElement = ({ children, label } : {children: ReactNode, lab
             </motion.div>
         </motion.div>
     )
-}
-
-AccordionElement.defaultProps = {
-    children: <p>content</p>,
-    label: 'accordion'
 }
