@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Header } from '../header/Header';
-import { Accordion, AccordionElement } from '../accordion';
+import { Accordion } from '../accordion';
 
 export const Page = ({ children } : { children: ReactNode }) => {
   return (
@@ -8,8 +8,8 @@ export const Page = ({ children } : { children: ReactNode }) => {
       <Header
         pageName={"CP Solutions"}
       />
-      <main style={{display: 'flex'}}>
-        <Accordion style={{flex: 1}}
+      <main className="flex">
+        <Accordion className="flex-1"
           content={
             {
               'button 1': <>content 1</>,
@@ -20,7 +20,7 @@ export const Page = ({ children } : { children: ReactNode }) => {
             }
           }
         />
-        <section style={{flex: '5'}}>
+        <section className="flex-[5_5_0%]">
           { children }
         </section>
         </main>

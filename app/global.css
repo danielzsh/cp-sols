@@ -19,40 +19,31 @@ svg {
   display: inline-block;
   vertical-align: top;
 }
-
-h1 {
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 1;
-  margin: 6px 0 6px 10px;
-  display: inline-block;
-  vertical-align: top;
+@layer base {
+  h1 {
+    @apply font-bold;
+    @apply text-xl;
+    margin: 6px 0 6px 10px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  section {
+    @apply text-lg;
+    @apply px-4;
+    @apply py-3;
+    color: #333;
+  }
+  section h1, section h2, section h3 {
+    @apply mx-0;
+    @apply mb-3;
+    @apply block;
+  }
+  section h1 {
+    @apply font-bold;
+    @apply text-3xl;
+    @apply leading-none;
+  }
 }
-
-p {
-  font-size: 18px;
-}
-
-button + button {
-  margin-left: 10px;
-}
-
-section {
-  font-size: 14px;
-  line-height: 24px;
-  padding: 18px 20px;
-  color: #333;
-}
-section h1, section h2, section h3 {
-  margin: 0 0 10px;
-  display: block;
-}
-section h1 {
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 1;
-}
-
 section p {
   margin: 1em 0;
 }

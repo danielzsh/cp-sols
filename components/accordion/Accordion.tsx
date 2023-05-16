@@ -11,7 +11,7 @@ export const Accordion = ({content, ...props}) => {
             );
         } else res.push(<AccordionElement label={key}>{content[key]}</AccordionElement>)
     }
-    return <div style={{flexDirection: 'column', ...props.style}} >
+    return <div className={`flex flex-col ${props.className}`}>
         {res}
     </div>
 }

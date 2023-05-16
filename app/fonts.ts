@@ -1,5 +1,5 @@
-import {Alegreya} from 'next/font/google';
+import {Inter} from 'next/font/google';
 
-export const font = Alegreya({
+export const font = Inter({
     subsets: ['latin']
 })
