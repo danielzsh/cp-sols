@@ -1,6 +1,5 @@
 'use client';
 import { useState, useRef, ReactNode } from 'react';
-import styles from './accordion.module.css';
 import { motion } from 'framer-motion';
 
 export const AccordionElement = ({ children, label } : {children: ReactNode, label: string}) => {
@@ -8,12 +7,11 @@ export const AccordionElement = ({ children, label } : {children: ReactNode, lab
     const content = useRef(null);
     return (
         <motion.div 
-            className={styles.accordion}
             animate={open ? "open" : "closed"}
             initial={"closed"}
         >
             <button 
-                className={styles['accordion-button']} 
+                className="w-full text-gray-600 p-4 text-left text-xl border-none rounded-lg transition duration-500 bg-transparent hover:bg-slate-50"
                 style={{display: 'flex', alignItems: 'center'}} 
                 onClick={() => {
                     setOpen(!open);
@@ -46,7 +44,7 @@ export const AccordionElement = ({ children, label } : {children: ReactNode, lab
                 {label}
             </button>
             <motion.div 
-                className={`${styles['accordion-content']}`} 
+                className="ml-4 overflow-hidden"
                 ref={content}
                 variants={{
                     open: {
