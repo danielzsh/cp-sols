@@ -15,7 +15,8 @@ export const Page = ({ children } : { children: ReactNode }) => {
               'button 1': <>content 1</>,
               'button 2': <>content 2</>,
               'button 3': {
-                'nested': <>content 3</>
+                'nested 1': <>content 3</>,
+                'nested 2': <>content 4</>
               }
             }
           }

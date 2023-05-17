@@ -1,4 +1,3 @@
-"use client";
 import Page from './page.mdx';
 function Home() {
   return (
