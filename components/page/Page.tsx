@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Header } from '../header/Header';
-import { Accordion } from '../accordion';
-
+import { Accordion, AccordionElement } from '../accordion';
+import { readdirSync } from 'fs';
 export const Page = ({ children } : { children: ReactNode }) => {
   return (
     <article>
@@ -9,18 +9,7 @@ export const Page = ({ children } : { children: ReactNode }) => {
         pageName={"CP Solutions"}
       />
       <main className="flex">
-        <Accordion className="flex-1"
-          content={
-            {
-              'button 1': <>content 1</>,
-              'button 2': <>content 2</>,
-              'button 3': {
-                'nested 1': <>content 3</>,
-                'nested 2': <>content 4</>
-              }
-            }
-          }
-        />
+        {renderDir("app/")}
         <section className="flex-[5_5_0%]">
           { children }
         </section>
@@ -28,3 +17,17 @@ export const Page = ({ children } : { children: ReactNode }) => {
     </article>
   );
 };
+
+function renderDir(path: string) : ReactNode {
+  const dir = readdirSync(path, {withFileTypes: true});
+  const res : ReactNode[] = [];
+  for (const item of dir) {
+    if (item.isDirectory()) 
+      res.push(
+        <AccordionElement label={item.name}>
+          {renderDir(path + item.name + '/')}
+        </AccordionElement>
+      );
+  }
+  return <Accordion className={path == "app/" ? "flex-1" : ""}>{res}</Accordion>;
+}

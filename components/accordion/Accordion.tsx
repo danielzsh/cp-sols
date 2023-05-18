@@ -1,17 +1,5 @@
-import { ReactNode, isValidElement } from 'react';
-import { AccordionElement } from './AccordionElement';
-export const Accordion = ({content, ...props}) => {
-    const res : ReactNode[] = [];
-    for (const key in content) {
-        if (!isValidElement(content[key])) {
-            res.push(
-                <AccordionElement label={key}>
-                    <Accordion content={content[key]} />
-                </AccordionElement>
-            );
-        } else res.push(<AccordionElement label={key}>{content[key]}</AccordionElement>)
-    }
+export const Accordion = ({children, ...props}) => {
     return <div className={`flex flex-col ${props.className}`}>
-        {res}
+        {children}
     </div>
 }
