@@ -1,7 +1,9 @@
 import React, { ReactNode } from 'react';
 import { Header } from '../header/Header';
 import { Accordion, AccordionElement } from '../accordion';
-import { readdirSync } from 'fs';
+import { readFileSync, readdirSync } from 'fs';
+import matter from 'gray-matter';
+import Link from 'next/link';
 export const Page = ({ children } : { children: ReactNode }) => {
   return (
     <article>
@@ -28,6 +30,10 @@ function renderDir(path: string) : ReactNode {
           {renderDir(path + item.name + '/')}
         </AccordionElement>
       );
+    else if (item.name == "page.mdx") {
+      const frontmatter = matter(readFileSync(path + item.name));
+      res.push(<Link href={path}>{frontmatter.data.title}</Link>);
+    }
   }
   return <Accordion className={path == "app/" ? "flex-1" : ""}>{res}</Accordion>;
 }
