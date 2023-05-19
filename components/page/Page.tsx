@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Header } from '../header/Header';
 import { Accordion, AccordionElement } from '../accordion';
-import { readFileSync, readdirSync } from 'fs';
+import { Dirent, readFileSync, readdirSync } from 'fs';
 import matter from 'gray-matter';
 import Link from 'next/link';
 export const Page = ({ children } : { children: ReactNode }) => {
@@ -24,16 +24,15 @@ function renderDir(path: string) : ReactNode {
   const dir = readdirSync(path, {withFileTypes: true});
   const res : ReactNode[] = [];
   for (const item of dir) {
-    if (item.isDirectory()) 
-      res.push(
-        <AccordionElement label={item.name}>
-          {renderDir(path + item.name + '/')}
-        </AccordionElement>
-      );
-    else if (item.name == "page.mdx") {
+    if (item.name == "page.mdx" && path != "app/") {
+      console.log(path, path.split("/"));
       const frontmatter = matter(readFileSync(path + item.name));
-      res.push(<Link href={path}>{frontmatter.data.title}</Link>);
+      return <Link href={path}>{frontmatter.data.title}</Link>;
     }
+    else if (item.isDirectory()) 
+      res.push(renderDir(path + item.name + '/'));
   }
-  return <Accordion className={path == "app/" ? "flex-1" : ""}>{res}</Accordion>;
+  const accordion = <Accordion className={path == "app/" ? "flex-1" : ""}>{res}</Accordion>;
+  if (path == "app/") return accordion;
+  else return <AccordionElement label={path.split("/").at(-2)}>{accordion}</AccordionElement>
 }
