@@ -10,6 +10,7 @@ export const Nav = ({ children, ...props }) => {
         >
             <motion.div
                 className="overflow-hidden"
+                initial={{width: 0}}
                 variants={{
                     open: {width: '18rem'},
                     closed: {width: 0}
@@ -22,7 +23,7 @@ export const Nav = ({ children, ...props }) => {
                 fill="none" viewBox="0 0 24 24" 
                 strokeWidth={1.5} 
                 stroke="currentColor" 
-                className="w-6 h-6 mt-5 ml-3"
+                className="w-6 h-6 mt-5 ml-3 cursor-pointer"
                 variants={{
                     open: {rotate: 45},
                     closed: {rotate: 0}

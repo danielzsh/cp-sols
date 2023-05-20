@@ -43,5 +43,11 @@ function renderDir(path: string) : ReactNode {
   }
   const accordion = <Accordion className={path == "app/" ? "w-72" : ""}>{res}</Accordion>;
   if (path == "app/") return accordion;
-  else return <AccordionElement label={path.split("/").at(-2)}>{accordion}</AccordionElement>
+  else {
+    const folder_name = path.split("/").at(-2);
+    const true_name = folder_name.split("_").map((str) => {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }).join(" ");
+    return <AccordionElement label={true_name}>{accordion}</AccordionElement>
+  }
 }
