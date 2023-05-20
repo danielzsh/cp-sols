@@ -27,7 +27,13 @@ function renderDir(path: string) : ReactNode {
     if (item.name == "page.mdx" && path != "app/") {
       console.log(path, path.split("/"));
       const frontmatter = matter(readFileSync(path + item.name));
-      return <Link href={path}>{frontmatter.data.title}</Link>;
+      return (
+        <div className="ml-3 text-lg">
+          <Link href={path}>
+            {frontmatter.data.title}
+          </Link>
+        </div>
+      );
     }
     else if (item.isDirectory()) 
       res.push(renderDir(path + item.name + '/'));
