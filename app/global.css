@@ -65,3 +65,7 @@ section li {
 button {
   font-family: inherit;
 }
+
+.katex-display > .katex {
+  text-align: left !important;
+}

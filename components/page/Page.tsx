@@ -27,13 +27,17 @@ function renderDir(path: string) : ReactNode {
   const dir = readdirSync(path, {withFileTypes: true});
   const res : ReactNode[] = [];
   for (const item of dir) {
-    if (item.name == "page.mdx" && path != "app/") {
-      console.log(path, path.split("/"));
-      const frontmatter = matter(readFileSync(path + item.name));
+    if (item.name == "page.tsx" && path != "app/") {
+      const folder_name = path.split("/").at(-2);
+      const true_name = folder_name.split("_").map((str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }).join(" ");
+      // const frontmatter = matter(readFileSync(path + item.name));
       return (
         <div className="ml-3 text-lg">
-          <Link href={path}>
-            {frontmatter.data.title}
+          <Link href={path.slice(4)}>
+            { /* frontmatter.data.title */ }
+            {true_name}
           </Link>
         </div>
       );
