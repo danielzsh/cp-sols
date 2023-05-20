@@ -1,17 +1,20 @@
 import React, { ReactNode } from 'react';
 import { Header } from '../header/Header';
 import { Accordion, AccordionElement } from '../accordion';
-import { Dirent, readFileSync, readdirSync } from 'fs';
+import { readFileSync, readdirSync } from 'fs';
 import matter from 'gray-matter';
 import Link from 'next/link';
+import { Nav } from '../nav';
+
 export const Page = ({ children } : { children: ReactNode }) => {
+  const nav = renderDir("app/");
   return (
     <article>
       <Header
         pageName={"CP Solutions"}
       />
       <main className="flex">
-        {renderDir("app/")}
+        <Nav>{renderDir("app/")}</Nav>
         <section className="flex-[5_5_0%]">
           { children }
         </section>
@@ -38,7 +41,7 @@ function renderDir(path: string) : ReactNode {
     else if (item.isDirectory()) 
       res.push(renderDir(path + item.name + '/'));
   }
-  const accordion = <Accordion className={path == "app/" ? "flex-1" : ""}>{res}</Accordion>;
+  const accordion = <Accordion className={path == "app/" ? "w-72" : ""}>{res}</Accordion>;
   if (path == "app/") return accordion;
   else return <AccordionElement label={path.split("/").at(-2)}>{accordion}</AccordionElement>
 }
