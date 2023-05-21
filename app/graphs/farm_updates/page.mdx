@@ -1,0 +1,6 @@
+# Farm Updates
+[**Problem Statement**](http://www.usaco.org/index.php?page=viewproblem2&cpid=1186)
+
+The first observation I made upon seeing this problem is that processing a *deactivation* of a barn is much harder than processing an *activation* of a barn. For deactivation, the amount of active barns in a component must be stored; however, if barns can only be activated and not deactivated, we only need to store whether the component is active or not. This observation motivates somehow procesing the queries in **reverse order**.
+
+Another important point to note is that the problem allows edges only to be added between **active** barns. When we process the queries in reverse order, this means that we can only remove edges that connect two active barns; therefore, the relevance of the component will not be affected, even if it is broken up. With these two observations, we can arrive at the [solution](https://github.com/devo1ution/cp/blob/main/USACO/1-22/farm_updates.cpp).
