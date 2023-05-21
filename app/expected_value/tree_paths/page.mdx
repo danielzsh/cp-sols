@@ -1,0 +1,24 @@
+# Game on Tree
+## Problem Statement
+I have a tree with N ≤ 105 nodes and randomly pick a path on this tree equiprobably. Formally, I randomly pick distinct vertices u and v and consider the path between them. What is the expected length of this path?
+
+---
+
+For problems like this one, it's common to consider the "contribution" of a single vertex or edge to the answer. In this case:
+$$
+\begin{equation*}
+\begin{split}
+E\text{[length of path]}    &= \frac{1}{\binom{N}{2}} \sum_{u,v\in V(T)} \text{dist(u, v)} \\
+                            &= \frac{1}{\binom{N}{2}} \sum_{u,v\in V(T)} \sum_{e\in E(T)} \text{[e is on path (u, v)]} \\
+                            &= \frac{1}{\binom{N}{2}} \sum_{e\in E(T)} \text{(number of paths that contain e)}
+\end{split}
+\end{equation*}
+$$
+
+Now, we just need to find a way to calculate how many paths contain edge $(u, v)$.
+
+Without loss of generality, assume $u$ is the parent of $v$. Then, any path that goes through edge $(u, v)$ must have one node in $v$'s subtree and one node not in $v$'s subtree. Therefore, if we let $s_v$ denote the number of nodes in $v$'s subtree (including v), we obtain our final answer:
+$$
+E\text{[length of path]} = \boxed{\frac{1}{\binom{N}{2}} \sum_{[u, v]\in E(T)} s_v * (n - s_v)}
+$$
+---
