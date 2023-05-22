@@ -3,9 +3,9 @@ import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-      mdxRs: false,
-    },
+    // experimental: {
+    //   mdxRs: false,
+    // },
 };
 export default nextMDX({
   options: {
