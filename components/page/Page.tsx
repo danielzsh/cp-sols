@@ -1,8 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Header } from '../header/Header';
 import { Accordion, AccordionElement } from '../accordion';
-import { readFileSync, readdirSync } from 'fs';
-import matter from 'gray-matter';
+import { readdirSync } from 'fs';
 import Link from 'next/link';
 import { Nav } from '../nav';
 
