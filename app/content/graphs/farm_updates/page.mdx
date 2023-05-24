@@ -1,4 +1,7 @@
-# Farm Updates
+export const meta = {
+    title: 'Farm Updates'
+};
+
 [**Problem Statement**](http://www.usaco.org/index.php?page=viewproblem2&cpid=1186)
 
 The first observation I made upon seeing this problem is that processing a *deactivation* of a barn is much harder than processing an *activation* of a barn. For deactivation, the amount of active barns in a component must be stored; however, if barns can only be activated and not deactivated, we only need to store whether the component is active or not. This observation motivates somehow procesing the queries in **reverse order**.
