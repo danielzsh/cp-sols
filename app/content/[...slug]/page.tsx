@@ -3,7 +3,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
     const {
         default: Component,
         meta
-    } = await import(`../${path}/page.mdx`);
+    } = await import(`../${path}.mdx`);
     return (
         <>
             <h1>{meta.title}</h1>

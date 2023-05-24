@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { Nav } from '../nav';
 
 export const Page = ({ children } : { children: ReactNode }) => {
-  const nav = renderDir("app/");
   return (
     <article>
       <Header
@@ -23,21 +22,18 @@ export const Page = ({ children } : { children: ReactNode }) => {
   );
 };
 
-function renderDir(path="app/content/") : ReactNode {
+async function renderDir(path="app/content/") {
   const dir = readdirSync(path, {withFileTypes: true});
   const res : ReactNode[] = [];
   for (const item of dir) {
-    if (item.name == "page.mdx") {
-      const folder_name = path.split("/").at(-2);
-      const true_name = folder_name.split("_").map((str) => {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-      }).join(" ");
-      // const frontmatter = matter(readFileSync(path + item.name));
-      return (
+    if (item.name.split(".").at(-1) == "mdx") {
+      const {
+        meta
+      } = await import("../../" + path + item.name);
+      res.push(
         <div className="ml-3 text-lg">
-          <Link href={path.slice(4)}>
-            { /* frontmatter.data.title */ }
-            {true_name}
+          <Link href={path.slice(4) + item.name.split(".")[0]}>
+            {meta.title}
           </Link>
         </div>
       );
@@ -49,9 +45,7 @@ function renderDir(path="app/content/") : ReactNode {
   if (path == "app/content/") return accordion;
   else {
     const folder_name = path.split("/").at(-2);
-    const true_name = folder_name.split("_").map((str) => {
-      return str.charAt(0).toUpperCase() + str.slice(1);
-    }).join(" ");
+    const true_name = folder_name.replaceAll("_", " ");
     return <AccordionElement label={true_name}>{accordion}</AccordionElement>
   }
 }
